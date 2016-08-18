@@ -1,0 +1,64 @@
+@(isAdmin: Boolean)(len: Int)(json: Form[CreateJsonForm])(password: Form[CreatePasswordForm])(implicit messages: Messages)
+
+@import helper._
+
+@main("Errors Logger") {
+    <ul id="errors"></ul>
+
+    <div align="center">
+        <div class="title">
+            <b>Errors Database</b>
+        </div>
+
+        Logged Errors: @len
+        <br><br>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div align="center">
+                <br><br>
+                @if(isAdmin) {
+                    @form(routes.ErrorController.resetAll()) {
+                        <div class="buttons">
+                            <input type="submit" value="CLEAR ALL"/>
+                        </div>
+                    }
+                    @form(routes.ErrorController.inputJSON()) {
+                        @inputText(json("JSON"))
+                        <div class="buttons">
+                            <input type="submit" value="Input JSON"/>
+                        </div>
+                    }
+                    <br>
+                    @form(routes.ErrorController.index()) {
+                        <div class="buttons">
+                            <input type="submit" value="Close Admin"/>
+                        </div>
+                    }
+                }
+                @if(!isAdmin) {
+                    @form(routes.ErrorController.graphIt()) {
+                        <div class="buttons">
+                            <input type="submit" value="Graph It"/>
+                        </div>
+                    }
+                    @form(routes.ErrorController.descErrors()) {
+                        <div class="buttons">
+                            <input type="submit" value="View JSON"/>
+                        </div>
+                    }
+                    <br>
+                    @form(routes.ErrorController.reqAdmin()) {
+                        @inputText(password("Password"))
+                        <div class="buttons">
+                            <input type="submit" value="Admin"/>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+    <br>
+}
