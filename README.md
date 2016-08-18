@@ -36,4 +36,4 @@ Errors are logged via POST requests to "[URL you are running the server on]/erro
       }]
   }
 ```
-You can find a Gatling simulation which automatically finds the latest recorded simulation log, converts it to this format, and makes the POST request here: https://github.com/pinocchiochang/stresstest-simulations/blob/master/src/test/scala/com/medialets/LogErrors.scala
+You can find a Gatling simulation which automatically finds the latest recorded simulation log, converts it to this format, and makes the POST request here: https://github.com/pinocchiochang/Stresstest-Simulations/blob/master/src/test/scala/com/medialets/LogErrors.scala
